@@ -14,6 +14,9 @@
 			.when('/movies/:category', {
 				templateUrl : 'view/movies.html'
 			})
+			.when('/movieinfo/:id', {
+				templateUrl : 'view/movie-info.html'
+			})
 			.otherwise({redirectTo:'/'});
 	}
 })();

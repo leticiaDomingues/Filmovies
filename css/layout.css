@@ -213,3 +213,94 @@
 .movies-template-container .movie-container {
 	margin-top: 3rem;
 }
+
+.movie-info-container .movie-title {
+	font-size: 3rem;
+	margin: 0;
+}
+
+.movie-info-container .material-icons {
+	font-size: 1.4rem;
+    margin-right: .4rem;
+}
+
+.movie-info-container .movie-directors-cast p {
+	margin: .5rem 0 0 0;
+}
+
+.movie-info-container .movie-rate {
+	font-weight: bold;
+	font-size: 1rem;
+	text-align: center;
+	cursor: pointer;
+}
+
+.movie-info-container .movie-stars {
+	width: 100%;
+	text-align: right;
+}
+
+.movie-info-container .btn-floating {
+	background-color: #ee6e73;
+	margin-left: .5rem;
+	width: 45px;
+	height: 45px;
+}
+.movie-info-container .btn-floating .material-icons {
+	line-height:  45px;
+}
+
+.movie-info-container .movie-details .material-icons {
+	color: #ee6e73;
+}
+
+.movie-reviews {
+	padding: 1.5rem 3.7rem;
+}
+
+.movie-reviews-title {
+	font-weight: bold;
+	font-size: 1.3rem;
+	padding-bottom: 1.5rem;
+}
+
+.movie-reviews img {
+    width: 6.5rem;
+}
+
+.movie-review-author {
+	font-weight: bold;
+	margin-bottom: 1rem;
+}
+
+.movie-review-status {
+	font-size: .8rem;
+	color: #4c4c4c;
+}
+.movie-review-status .pipe {
+	margin: 0 1rem;
+}
+
+.movie-review-status .material-icons {
+    font-size: 1rem;
+    color: #ee6e73;
+}
+
+.movie-review:not(.first) {
+	border-top: 1px solid rgba(170, 170, 170, .3);
+	padding-top: 2.5rem;
+}
+
+.movie-review {
+	padding-bottom: 1rem;
+}
+
+.movie-reviews .buttons .btn {
+	background-color: #ee6e73;
+	margin-left: 1rem;
+}
+
+.movie-reviews .buttons {
+	text-align: right;
+	margin-top: 3rem;
+}
