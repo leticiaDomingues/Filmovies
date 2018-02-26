@@ -9,7 +9,7 @@
 	function config($routeProvider) {
 		$routeProvider
 			.when('/', {
-				templateUrl : 'view/movies.html'
+				templateUrl : 'view/home.html'
 			})
 			.otherwise({redirectTo:'/'});
 	}
