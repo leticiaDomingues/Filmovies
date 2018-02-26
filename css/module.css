@@ -1,3 +1,27 @@
 .inline-block {
-	display: inline-block;
+	display: inline-block !important;
+}
+
+.height-10 {
+	height: 10rem !important;
+}
+
+.padding-3 {
+	padding: 3rem;
+}
+
+.margin-t2 {
+	margin-top: 2rem;
+}
+
+.margin-t3 {
+	margin-top: 3rem;
+}
+
+.font-2 {
+	font-size: 2rem;
+}
+
+.text-center {
+	text-align: center;
 }

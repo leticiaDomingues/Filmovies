@@ -22,8 +22,10 @@
 		<!-- Menu -->
 		<ul class="side-nav fixed sidebar-menu" style="transform: translateX(0%);">
         	<li class="logo-wrapper">
-            	<img src='images/logo2.png' class='logo-image'/>
-				<p class='logo-text'>FilMovies</p>
+        		<a href='#/' class='inline-block height-10'>
+	            	<img src='images/logo2.png' class='logo-image'/>
+					<p class='logo-text'>FilMovies</p>
+				</a>
         	</li>
 	        <li class="search">
 	          <div class="search-wrapper card">
@@ -33,12 +35,18 @@
 	        </li>
         	<li class='nav-item'>
         		<a href="#/" class="waves-effect waves-red" style='color: white !important; font-weight: 300'>
-        			<i class="material-icons" style='color: #ee6e73 !important;'>date_range</i>
+        			<i class="material-icons" style='color: #ee6e73 !important;'>home</i>
+        			Home
+        		</a>
+        	</li>
+        	<li class='nav-item'>
+        		<a href="#/movies/new" class="waves-effect waves-red">
+        			<i class="material-icons">date_range</i>
         			Lançamentos
         		</a>
         	</li>
         	<li class='nav-item'>
-        		<a href="#/" class="waves-effect waves-red"><i class="material-icons">trending_up</i>Melhores Filmes</a>
+        		<a href="#/movies/best" class="waves-effect waves-red"><i class="material-icons">trending_up</i>Melhores Filmes</a>
         	</li>
         	<li class='nav-item'>
         		<a href="#/" class="waves-effect waves-red"><i class="material-icons">explore</i>Explorar</a>
@@ -51,18 +59,17 @@
             			</a>
               			<div class="collapsible-body">
 	                		<ul>
-			                  <li class='nav-item'><a href="#">Ação</a></li>
-			                  <li class='nav-item'><a href="#">Animação</a></li>
-			                  <li class='nav-item'><a href="#">Aventura</a></li>
-			                  <li class='nav-item'><a href="#">Comédia</a></li>
-			                  <li class='nav-item'><a href="#">Documentário</a></li>
-			                  <li class='nav-item'><a href="#">Drama</a></li>
-			                  <li class='nav-item'><a href="#">Ficção Científica</a></li>
-			                  <li class='nav-item'><a href="#">Guerra</a></li>
-			                  <li class='nav-item'><a href="#">Policial</a></li>
-			                  <li class='nav-item'><a href="#">Romance</a></li>
-			                  <li class='nav-item'><a href="#">Suspense</a></li>
-			                  <li class='nav-item'><a href="#">Terror</a></li>
+			                  <li class='nav-item'><a href="#/movies/action">Ação</a></li>
+			                  <li class='nav-item'><a href="#/movies/animation">Animação</a></li>
+			                  <li class='nav-item'><a href="#/movies/adventure">Aventura</a></li>
+			                  <li class='nav-item'><a href="#/movies/comedy">Comédia</a></li>
+			                  <li class='nav-item'><a href="#/movies/documentary">Documentário</a></li>
+			                  <li class='nav-item'><a href="#/movies/drama">Drama</a></li>
+			                  <li class='nav-item'><a href="#/movies/sci-fi">Ficção Científica</a></li>
+			                  <li class='nav-item'><a href="#/movies/war">Guerra</a></li>
+			                  <li class='nav-item'><a href="#/movies/romance">Romance</a></li>
+			                  <li class='nav-item'><a href="#/movies/thriller">Suspense</a></li>
+			                  <li class='nav-item'><a href="#/movies/horror">Terror</a></li>
 	                		</ul>
               			</div>
             		</li>
@@ -98,5 +105,6 @@
 	<script src="js/app.routes.js"></script>
 	<script src="js/controllers/app.js"></script>
 	<script src="js/controllers/home.js"></script>
+	<script src="js/controllers/movies.js"></script>
 </body>
 </html>

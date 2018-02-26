@@ -11,6 +11,9 @@
 			.when('/', {
 				templateUrl : 'view/home.html'
 			})
+			.when('/movies/:category', {
+				templateUrl : 'view/movies.html'
+			})
 			.otherwise({redirectTo:'/'});
 	}
 })();
