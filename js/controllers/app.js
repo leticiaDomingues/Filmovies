@@ -5,9 +5,13 @@
 		.module('app')
 		.controller('AppController', appController);
 
-	appController.$inject = ['$scope'];
+	appController.$inject = ['$scope','FilMovies'];
 
-	function appController($scope) {
-		
+	function appController($scope, FilMovies) {
+		//get categories from API
+		$scope.categories = [];
+		FilMovies.getAllCategories().then(function(data) { 
+			$scope.categories = data;
+		}, function(){}); 
 	}
 })();
