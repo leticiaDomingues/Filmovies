@@ -133,7 +133,7 @@
 	display: block;
     margin: 0 0 0 240px;
     background-color: #fff;
-    padding: 0 10px;
+    padding: 0 .2rem;
 }
 
 
@@ -148,6 +148,8 @@
   	width: 142px;
 	height: 203px;
 	cursor: pointer;
+	padding: 0 !important;
+	margin-bottom: .45rem;
 }
 
 /* The overlay effect (full height and width) - lays on top of the container and over the image */
@@ -303,4 +305,35 @@
 .movie-reviews .buttons {
 	text-align: right;
 	margin-top: 3rem;
+}
+
+.s8ths,
+.m8ths,
+.l8ths,
+.xl8ths {
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.row .col.s8ths {
+  width: 12.5%;
+}
+
+@media only screen and (min-width: 601px) {
+  .row .col.m8ths {
+    width: 12.5%;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .row .col.l8ths {
+    width: 12.5%;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .row .col.xl8ths {
+    width: 12.5%;
+  }
 }
