@@ -1,6 +1,6 @@
 <div ng-controller='HomeController as homeCtrl' class="main-div row">
 	<div class='movie-container col s8ths text-center' ng-repeat="movie in homeCtrl.movies">
-		<a href='#/movieinfo/1'>
+		<a href='#/movieinfo/{{movie.MovieID}}'>
 			<img class='movie-thumbnail' ng-src='{{movie.ImageUrl}}'/>
 			<div class="overlay">
 				<div class="movie-info">

@@ -16,6 +16,46 @@
 	        });
 		};
 
+		function getAllMovies() {
+	        return $http.get(baseUrl + '/movie').then(function(result){
+			  	return result.data;
+	        });
+		};
+
+		function getBestRatedMovies(page) {
+	        return $http.get(baseUrl + '/movie/best/rate?page=' + page).then(function(result){
+			  	return result.data;
+	        });
+		};
+
+		function getNewMovies(page) {
+	        return $http.get(baseUrl + '/movie/new?page=' + page).then(function(result){
+			  	return result.data;
+	        });
+		};
+
+		function getMoviesByCategory(categoryId, page) {
+	        return $http.get(baseUrl + '/movie/category?categoryId=' + categoryId + '&page=' + page).then(function(result){
+			  	return result.data;
+	        });
+		};
+
+		function getMoviesByQuery(query, page) {
+	        return $http.get(baseUrl + '/movie/query?query=' + query + '&page=' + page).then(function(result){
+			  	return result.data;
+	        });
+		};
+
+		function getMoviesTemplate(pageName, query, page) {
+			if(pageName == "new")
+				return getNewMovies(page);
+			else if (pageName=="best")
+				return getBestRatedMovies(page);
+			else if (pageName=="category")
+	        	return getMoviesByCategory(query, page);
+	        return getMoviesByQuery(query, page);
+		};
+
 		function getAllCategories() {
 	        return $http.get(baseUrl + '/category').then(function(result){
 			  	return result.data;
@@ -24,7 +64,8 @@
 
 		return {
 			getRandomMovies : getRandomMovies,
-			getAllCategories : getAllCategories
+			getAllCategories : getAllCategories,
+			getMoviesTemplate : getMoviesTemplate
 		};
 	}
 })();

@@ -11,7 +11,7 @@
 			.when('/', {
 				templateUrl : 'view/home.html'
 			})
-			.when('/movies/:category', {
+			.when('/movies/:page', {
 				templateUrl : 'view/movies.html'
 			})
 			.when('/movieinfo/:id', {

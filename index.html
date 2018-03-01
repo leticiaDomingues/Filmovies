@@ -28,45 +28,45 @@
         	</li>
 	        <li class="search">
 	          <div class="search-wrapper card">
-	            <input class="search-input"><i class="material-icons">search</i>
+	            <input class="search-input" ng-model='search'><i class="material-icons">search</i>
 	            <div class="search-results"></div>
 	          </div>
 	        </li>
-        	<li class='nav-item'>
-        		<a href="#/" class="waves-effect waves-red" style='color: white !important; font-weight: 300'>
-        			<i class="material-icons" style='color: #ee6e73 !important;'>home</i>
+        	<li class='nav-item' ng-class='activePageClasses[0]' ng-click='changeActivePageClass(0)'>
+        		<a href="#/" class="waves-effect waves-red">
+        			<i class="material-icons">home</i>
         			Home
         		</a>
         	</li>
-        	<li class='nav-item'>
+        	<li class='nav-item' ng-class='activePageClasses[1]' ng-click='changeActivePageClass(1)'>
         		<a href="#/movies/new" class="waves-effect waves-red">
         			<i class="material-icons">date_range</i>
         			Lançamentos
         		</a>
         	</li>
-        	<li class='nav-item'>
+        	<li class='nav-item' ng-class='activePageClasses[2]' ng-click='changeActivePageClass(2)'>
         		<a href="#/movies/best" class="waves-effect waves-red"><i class="material-icons">trending_up</i>Melhores Filmes</a>
         	</li>
-        	<li class='nav-item'>
+        	<li class='nav-item' ng-class='activePageClasses[3]' ng-click='changeActivePageClass(3)'>
         		<a href="#/" class="waves-effect waves-red"><i class="material-icons">explore</i>Explorar</a>
         	</li>
         	<li class='nav-item'>
           		<ul class="collapsible collapsible-accordion">
-            		<li class="bold">
+            		<li class="bold" >
             			<a class="collapsible-header waves-effect waves-red">
             				<i class="material-icons">dehaze</i>Gêneros
             			</a>
               			<div class="collapsible-body">
 	                		<ul>
-			                  <li class='nav-item' ng-repeat="category in categories">
-			                  	<a href="#/movies/action">{{category.Name}}</a>
+			                  <li class='nav-item' ng-repeat="category in categories" ng-class='activePageClasses[{{5 +$index}}]' ng-click='changeActivePageClass(5+$index)'>
+			                  	<a href="#/movies/category-{{category.CategoryID}}">{{category.Name}}</a>
 			                  </li>
 	                		</ul>
               			</div>
             		</li>
       			</ul>
       		</li>
-      		<li class='nav-item'>
+      		<li class='nav-item' ng-class='activePageClasses[16]' ng-click='changeActivePageClass(16)'>
         		<a href="#/" class="waves-effect waves-red"><i class="material-icons">person</i>Meu Perfil</a>
         	</li>
         	<li class='nav-login-logout'>
