@@ -5,11 +5,19 @@
 		.module('app')
 		.controller('MovieInfoController', movieInfoController);
 
-	movieInfoController.$inject = ['$routeParams'];
+	movieInfoController.$inject = ['$routeParams', 'FilMovies'];
 
-	function movieInfoController($routeParams) {
+	function movieInfoController($routeParams, FilMovies) {
 		var self = this;
 
-		self.name = ($routeParams.id == 1) ? "The Godfather" :  "Fight Club";
+		let movieID = $routeParams.id;
+
+		//get movie info from API
+		let promise = FilMovies.getMovie(movieID);
+		promise.then(function(data) { 
+			self.movie = data;
+			self.movie.Year = self.movie.ReleaseDate.substring(0,4);
+			console.log(self.movie);
+		}, function(){}); 	
 	}
 })();

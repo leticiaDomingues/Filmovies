@@ -1,13 +1,13 @@
 <div ng-controller='MovieInfoController as mInfoCtrl' class="main-div padding-3">
 	<div class='movie-info-container row'>
-		<div class='col s5 text-center height-500'>
-			<img class='height-500' src='https://cdn.fstatic.com/media/movies/covers/2011/08/f623d26a6107a9cdbb2d805ed45675a6.jpg'>
+		<div class='col s5 text-center height-570'>
+			<img class='height-570' ng-src="{{mInfoCtrl.movie.ImageUrl}}">
 		</div>
-		<div class='col s6 height-500 relative'>
+		<div class='col s6 height-570 relative'>
 			<div class='full-width vertical-middle'>
-				<div class='movie-title no-padding col s9'>{{mInfoCtrl.name}}</div>
+				<div class='movie-title no-padding col s9'>{{mInfoCtrl.movie.Title}}</div>
 				<div class='col s3 no-padding margin-t1'>
-					<div class='movie-rate no-margin'>4.7</div>
+					<div class='movie-rate no-margin'>{{mInfoCtrl.movie.Rate| number:1}}/5.0</div>
 					<div class='inline-block movie-stars'>
 						<i class="material-icons movie-rate">star_border</i>
 						<i class="material-icons movie-rate">star_border</i>
@@ -18,16 +18,22 @@
 				</div>
 			</div>
 			<div class='movie-details inline-block'>
-				<span class='margin-r2 vertical-middle'><i class="material-icons">date_range</i>1972</span>
-				<span class='margin-r2 vertical-middle'><i class="material-icons">access_time</i>117min</span>
-				<span class='margin-r2 vertical-middle'>Crime | Drama</span>
+				<span class='margin-r2 vertical-middle'><i class="material-icons">date_range</i>{{mInfoCtrl.movie.Year}}</span>
+				<span class='margin-r2 vertical-middle'><i class="material-icons">access_time</i>{{mInfoCtrl.movie.Duration}}min</span>
+				<span class='margin-r2 vertical-middle'>
+					<span ng-repeat="category in mInfoCtrl.movie.Categories" class='movie-category'>
+						 <span class='category-name'>{{category.Name}}</span>
+						<span class='category-pipe'>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+					</span>
+				</span>
 			</div>
 			<div class='movie-description margin-t3'>
-				<p class='justify'>Widely regarded as one of the greatest films of all time, this mob drama, based on Mario Puzo's novel of the same name, focuses on the powerful Italian-American crime family of Don Vito Corleone (Marlon Brando). When the don's youngest son, Michael (Al Pacino), reluctantly joins the Mafia, he becomes involved in the inevitable cycle of violence and betrayal. Although Michael tries to maintain a normal relationship with his wife, Kay (Diane Keaton), he is drawn deeper into the family business.</p>
+				<p class='justify'>{{mInfoCtrl.movie.Description}}</p>
 			</div>
 			<div class='movie-directors-cast margin-t2'>
-				<p><span class='bold'>Diretor:</span> Francis Ford Coppola</p>
-				<p><span class='bold'>Elenco:</span> Marlon Brando, Al Pacino, James Caan</p>
+				<p><span class='bold'>Diretor:</span> {{mInfoCtrl.movie.Directors[0].Name}}</p>
+				<p><span class='bold'>Elenco:</span> 
+					{{mInfoCtrl.movie.Actors[0].Name}}, {{mInfoCtrl.movie.Actors[1].Name}}, {{mInfoCtrl.movie.Actors[2].Name}}</p>
 			</div>
 			<div class='movie-directors-cast bottom-fixed-right'>
 				<a class="btn-floating waves-effect waves-light"><i class="material-icons">remove_red_eye</i></a>

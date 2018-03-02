@@ -22,6 +22,12 @@
 	        });
 		};
 
+		function getMovie(movieID) {
+	        return $http.get(baseUrl + '/movie/' + movieID).then(function(result){
+			  	return result.data;
+	        });
+		};
+
 		function getBestRatedMovies(page) {
 	        return $http.get(baseUrl + '/movie/best/rate?page=' + page).then(function(result){
 			  	return result.data;
@@ -65,7 +71,8 @@
 		return {
 			getRandomMovies : getRandomMovies,
 			getAllCategories : getAllCategories,
-			getMoviesTemplate : getMoviesTemplate
+			getMoviesTemplate : getMoviesTemplate,
+			getMovie : getMovie
 		};
 	}
 })();

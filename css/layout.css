@@ -364,3 +364,7 @@
 .side-nav .collapsible-body .active {
 	background-color: inherit !important;
 }
+
+.movie-info-container .movie-category:last-child  .category-pipe{
+	display: none;
+}
