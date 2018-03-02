@@ -38,89 +38,38 @@
 			<div class='movie-directors-cast bottom-fixed-right'>
 				<a class="btn-floating waves-effect waves-light"><i class="material-icons">remove_red_eye</i></a>
 				<a class="btn-floating waves-effect waves-light"><i class="material-icons">favorite</i></a>
+				<a class="btn-floating waves-effect waves-light"><i class="material-icons">edit</i></a>
 			</div>
 		</div>
 	</div>
 	<div class='movie-reviews row'>
 		<p class='movie-reviews-title'>Comentários:</p>
-		<div class='row movie-review first'>
+		<div class='row movie-review' ng-repeat="r in mInfoCtrl.reviews">
 			<div class='col s2'>
 				<img src='https://www.wallstreetotc.com/wp-content/uploads/2014/10/facebook-anonymous-app.jpg'>
 			</div>
 			<div class='col s10'>
 				<div class='movie-review-author'>
-					Maria Rodrigues
+					{{r.User.Name}}
 				</div>
 				<div class='movie-review-content'>
-					This movie is strong, good script, great casting, excellent acting, and over the top directing. It is hard to fine a movie done this well, it is 29 years old and has aged well. Even if the viewer does not like mafia type of movies, he or she will watch the entire film, the audiences is glued to what will happen next as the film progresses. Its about, family, loyalty, greed, relationships, and real life. This is a great mix, and the artistic style make the film memorable.
+					{{r.Review.Content}}
 
 				</div>
 				<div class='movie-review-status margin-t1'>
-					<span class='vertical-middle'><i class="material-icons margin-r06">access_time</i> 20 Fev 2018</span>
-					<span class='pipe'>|</span>
-					<div class='inline-block movie-stars vertical-middle'>
-						<i class="material-icons movie-rate">star</i>
-						<i class="material-icons movie-rate">star</i>
-						<i class="material-icons movie-rate">star</i>
-						<i class="material-icons movie-rate">star</i>
-						<i class="material-icons movie-rate">star_half</i>
+					<span class='vertical-middle'><i class="material-icons margin-r06">access_time</i>{{r.Review.Date | date:'dd MMM yyyy'}}</span>
+					<div class='movie-stars vertical-middle' ng-show="{{r.Rate}} > 0">
+						<span class='pipe'>|</span>
+						<i class="material-icons movie-rate" ng-repeat="star in r.Stars track by $index">{{star}}</i>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class='row movie-review'>
-			<div class='col s2'>
-				<img src='https://www.wallstreetotc.com/wp-content/uploads/2014/10/facebook-anonymous-app.jpg'>
-			</div>
-			<div class='col s10'>
-				<div class='movie-review-author'>
-					Isabela Sato
-				</div>
-				<div class='movie-review-content'>
-					Shorn of its gangster trappings, The Godfather is sprawling and soap-operatic in tone. The sprawl is appropriate to its origins as a novel by Mario Puzo, who also co-wrote the screenplay with Coppola. There is a large cast of characters--maybe too large, as it can be difficult to keep track of just who everyone is. Even after you've watched the film a couple times you may find scenes where mobsters seem to spontaneously appear and you catch yourself saying, "Wait, who is that guy supposed to be again?" The soap opera angle can be a positive or negative depending on your tastes. I tend to not like soap-operatic stories, but of course Coppola put yummy gangster topping on this one to make it palatable for guys like me. At root, though, The Godfather is concerned with realistic depictions of a very dysfunctional family as they try to make it through life--including marriages, births, adultery, spats between family members, tiffs with others in their community, and so on. My theory is that the soap opera angle accounts for much of the film's appeal. For me, it (and the slight lack of focus from the sprawl) accounts for much of the reason that I barely gave the film a 10.
-
-				</div>
-				<div class='movie-review-status margin-t1'>
-					<span class='vertical-middle'><i class="material-icons margin-r06">access_time</i> 20 Fev 2018</span>
-					<span class='pipe'>|</span>
-					<div class='inline-block movie-stars vertical-middle'>
-						<i class="material-icons movie-rate">star</i>
-						<i class="material-icons movie-rate">star</i>
-						<i class="material-icons movie-rate">star</i>
-						<i class="material-icons movie-rate">star</i>
-						<i class="material-icons movie-rate">star</i>
-					</div>
-				</div>
-			</div>
+		<div class='no-reviews-to-display' ng-class='mInfoCtrl.displayNoReviewsDiv'>
+			Esse filme ainda não possui nenhum comentário.
 		</div>
-		<div class='row movie-review'>
-			<div class='col s2'>
-				<img src='https://www.wallstreetotc.com/wp-content/uploads/2014/10/facebook-anonymous-app.jpg'>
-			</div>
-			<div class='col s10'>
-				<div class='movie-review-author'>
-					Natália Cruz
-				</div>
-				<div class='movie-review-content'>
-					I love this movie and all of the GF movies. I see something new every time I have seen it (countless, truly). The story of tragedy and (little) comedy that exists in this film is easily understood by people all over the world. This film has been called an American story however I have met others who have seen this movie in other languages and they seem to have the same love and appreciation for it that I do. I love the characters and all of the different personalities that they represent not just in families but in society itself. It seems like the entire cast is part of every other movie that I love as well. The sounds, music, color and light in the film are just as much a part of the film as the people. This could be attributed to the method in which it was filmed. At many parts of the film I can still find myself feeling the emotions conveyed in the film. I never tire of appreciating this film. I thank God that FFC is an American treasure. We are fortunate to have him.
-
-				</div>
-				<div class='movie-review-status margin-t1'>
-					<span class='vertical-middle'><i class="material-icons margin-r06">access_time</i> 20 Fev 2018</span>
-					<span class='pipe'>|</span>
-					<div class='inline-block movie-stars vertical-middle'>
-						<i class="material-icons movie-rate">star</i>
-						<i class="material-icons movie-rate">star</i>
-						<i class="material-icons movie-rate">star</i>
-						<i class="material-icons movie-rate">star</i>
-						<i class="material-icons movie-rate">star_border</i>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class='buttons'>
-			<a class="btn waves-effect waves-light"><i class="material-icons left">cloud_download</i>Carregar mais</a>
-			<a class="btn waves-effect waves-light"><i class="material-icons left">edit</i>Comentar</a>
+		<div class='buttons' ng-show='mInfoCtrl.nextReviewPage > 0'>
+			<button class="btn waves-effect waves-light" ng-click="mInfoCtrl.getReviews()"><i class="material-icons left">cloud_download</i>Carregar mais</button>
 		</div>
 	</div>
 </div>

@@ -289,7 +289,7 @@
     color: #ee6e73;
 }
 
-.movie-review:not(.first) {
+.movie-review:not(:first-of-type) {
 	border-top: 1px solid rgba(170, 170, 170, .3);
 	padding-top: 2.5rem;
 }

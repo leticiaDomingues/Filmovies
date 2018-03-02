@@ -28,6 +28,12 @@
 	        });
 		};
 
+		function getMovieReviews(movieId, page) {
+	        return $http.get(baseUrl + '/review/movie?movieId=' + movieId + '&page=' + page).then(function(result){
+			  	return result.data;
+	        });
+		};
+
 		function getBestRatedMovies(page) {
 	        return $http.get(baseUrl + '/movie/best/rate?page=' + page).then(function(result){
 			  	return result.data;
@@ -72,7 +78,8 @@
 			getRandomMovies : getRandomMovies,
 			getAllCategories : getAllCategories,
 			getMoviesTemplate : getMoviesTemplate,
-			getMovie : getMovie
+			getMovie : getMovie,
+			getMovieReviews : getMovieReviews
 		};
 	}
 })();
