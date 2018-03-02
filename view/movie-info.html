@@ -38,7 +38,7 @@
 			<div class='movie-directors-cast bottom-fixed-right'>
 				<a class="btn-floating waves-effect waves-light"><i class="material-icons">remove_red_eye</i></a>
 				<a class="btn-floating waves-effect waves-light"><i class="material-icons">favorite</i></a>
-				<a class="btn-floating waves-effect waves-light"><i class="material-icons">edit</i></a>
+				<a class="btn-floating waves-effect waves-light modal-trigger" href="#modalNewReview" onclick="return false;"><i class="material-icons">edit</i></a>
 			</div>
 		</div>
 	</div>
@@ -69,7 +69,28 @@
 			Esse filme ainda não possui nenhum comentário.
 		</div>
 		<div class='buttons' ng-show='mInfoCtrl.nextReviewPage > 0'>
-			<button class="btn waves-effect waves-light" ng-click="mInfoCtrl.getReviews()"><i class="material-icons left">cloud_download</i>Carregar mais</button>
+			<button class="btn waves-effect waves-light" ng-click="mInfoCtrl.getReviews('Refresh')"><i class="material-icons left">cloud_download</i>Carregar mais</button>
 		</div>
+	</div>
+
+	 <!-- Modal - Write review -->
+	<div id="modalNewReview" class="modal">
+	    <div class="modal-content">
+	      	
+	     	<div class="row">
+			    <form class="col s12">
+			      	<div class="row">
+			        	<div class="input-field col s11">
+			          		<i class="material-icons prefix">mode_edit</i>
+			          		<textarea class="materialize-textarea" ng-model='mInfoCtrl.newReview'></textarea>
+			          		<label for="icon_prefix2">Novo comentário</label>
+			        	</div>
+			      	</div>
+			    </form>
+			</div>
+	    <div class="modal-footer">
+	      	<a href="#!" ng-click='mInfoCtrl.addReview()' onclick="return false;" class="modal-action modal-close waves-effect waves-green btn">Comentar</a>
+
+	    </div>
 	</div>
 </div>

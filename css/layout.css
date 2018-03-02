@@ -273,7 +273,6 @@
 
 .movie-review-author {
 	font-weight: bold;
-	margin-bottom: 1rem;
 }
 
 .movie-review-status {
@@ -367,4 +366,23 @@
 
 .movie-info-container .movie-category:last-child  .category-pipe{
 	display: none;
+}
+
+.modal .material-icons,
+.modal .input-field .active {
+	color: #ee6e73 !important;
+}
+
+.modal .materialize-textarea,
+.movie-reviews .movie-review-content {
+	white-space: pre-line; 
+}
+
+.modal .materialize-textarea:focus {
+	border-bottom: 1px solid #ee6e73 !important;
+	box-shadow: 0 1px 0 0 #ee6e73 !important;
+}
+
+.modal-footer .btn {
+	background-color: #ee6e73;
 }

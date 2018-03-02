@@ -40,6 +40,10 @@
 	        });
 		};
 
+		function addReview(review) {
+	        return $http.post(baseUrl + '/review', review);
+		};
+
 		function getNewMovies(page) {
 	        return $http.get(baseUrl + '/movie/new?page=' + page).then(function(result){
 			  	return result.data;
@@ -79,7 +83,8 @@
 			getAllCategories : getAllCategories,
 			getMoviesTemplate : getMoviesTemplate,
 			getMovie : getMovie,
-			getMovieReviews : getMovieReviews
+			getMovieReviews : getMovieReviews,
+			addReview : addReview
 		};
 	}
 })();
