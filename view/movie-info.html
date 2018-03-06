@@ -86,14 +86,17 @@
 			      	<div class="row">
 			        	<div class="input-field col s11">
 			          		<i class="material-icons prefix">mode_edit</i>
-			          		<textarea class="materialize-textarea" ng-model='mInfoCtrl.newReview'></textarea>
+			          		<textarea class="materialize-textarea" ng-model='mInfoCtrl.newReview' required></textarea>
 			          		<label for="icon_prefix2">Novo comentário</label>
+			        	</div>
+			        	<div class="input-field col s11 invalid-review" ng-class='mInfoCtrl.invalidReview'>
+			        		Digite um comentário.
 			        	</div>
 			      	</div>
 			    </form>
 			</div>
 	    <div class="modal-footer">
-	      	<a href="#!" ng-click='mInfoCtrl.addReview()' onclick="return false;" class="modal-action modal-close waves-effect waves-green btn">Comentar</a>
+	      	<a ng-click='mInfoCtrl.addReview()' onclick="return false;" ng-class='mInfoCtrl.closeModal' class="modal-action waves-effect waves-light btn">Comentar</a>
 
 	    </div>
 	</div>

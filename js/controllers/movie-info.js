@@ -23,6 +23,8 @@
 		self.displayNoReviewsDiv = 'display-none';
 		self.movieClasses = ['', ''];
 		self.movieWatched = null;
+		self.closeModal='modal-close';
+		self.invalidReview = 'display-none';
 
 		//get movie info from API
 		let promise = FilMovies.getMovie(self.movieID);
@@ -99,21 +101,27 @@
 		}
 
 		self.addReview = function() {
-			var review =  {
-				"Content": self.newReview,
-				"Date": new Date(),
-				"Username": self.username,
-				"MovieID": self.movieID
+			if(self.newReview == "" || self.newReview == undefined) {
+				self.closeModal='';
+				self.invalidReview = 'inline-block';
+			} else {
+				self.closeModal='modal-close';
+				self.invalidReview = 'display-none';
+
+				var review =  {
+					"Content": self.newReview,
+					"Date": new Date(),
+					"Username": self.username,
+					"MovieID": self.movieID
+				}
+				
+
+				let promise = FilMovies.addReview(review);
+				promise.then(function(data) { 
+					self.newReview = "";
+					self.getReviews("afterNewReview");
+				}, function(){}); 
 			}
-			
-
-			let promise = FilMovies.addReview(review);
-			promise.then(function(data) { 
-				self.newReview = "";
-				self.getReviews("afterNewReview");
-			}, function(){}); 
-
-			return false;
 		}
 
 		self.watchMovie = function(isFavorite, rate) {

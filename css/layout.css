@@ -423,3 +423,10 @@
 .modal-footer .btn {
 	background-color: #ee6e73;
 }
+
+#modalNewReview .invalid-review {
+	text-align: left;
+    margin-left: 3rem;
+    color: red;
+    font-size: .8rem;
+}
