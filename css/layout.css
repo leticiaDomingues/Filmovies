@@ -250,7 +250,8 @@
 	height: 45px;
 }
 .movie-info-container .btn-floating .material-icons {
-	line-height:  45px;
+	line-height: 43px;
+    width: 44px;
 }
 
 .movie-info-container .movie-details .material-icons {
@@ -286,6 +287,34 @@
 .movie-review-status .material-icons {
     font-size: 1rem;
     color: #ee6e73;
+}
+
+.movie-info-container .btn-floating  {
+	background-color: transparent;
+	border: 1px solid #ee6e73;
+}
+
+.movie-info-container .btn-floating .material-icons {
+	color: #ee6e73;
+}
+
+.movie-info-container .btn-floating.checked  {
+	background-color: #ee6e73;
+}
+
+
+.movie-info-container .btn-floating.checked .material-icons {
+	color: #fff;
+}
+
+.movie-info-container .btn-floating.favorite.checked  {
+	background-color: red;
+	border: 1px solid red;
+}
+
+.movie-info-container .btn-floating.watched.checked  {
+	background-color: green;
+	border: 1px solid green;
 }
 
 .movie-review:not(:first-of-type) {

@@ -78,13 +78,36 @@
 	        });
 		};
 
+		function didUserWatchMovie(movieID, username) {
+	        return $http.get(baseUrl + '/moviewatched?movieID=' + movieID + '&username=' + username).then(function(result){
+			  	return result.data;
+	        });
+		};
+
+		function watchMovie(movieWatched) {
+	        return $http.post(baseUrl + '/moviewatched', movieWatched);
+		};
+
+		function removeMovieWatched(movieID, username) {
+	        return $http.delete(baseUrl + '/moviewatched?movieID=' + movieID + '&username=' + username);
+		};
+
+		function addFavorite(movieWatched) {
+	        return $http.put(baseUrl + '/moviewatched', movieWatched);
+		};
+
+
 		return {
 			getRandomMovies : getRandomMovies,
 			getAllCategories : getAllCategories,
 			getMoviesTemplate : getMoviesTemplate,
 			getMovie : getMovie,
 			getMovieReviews : getMovieReviews,
-			addReview : addReview
+			addReview : addReview,
+			didUserWatchMovie : didUserWatchMovie,
+			watchMovie : watchMovie,
+			removeMovieWatched : removeMovieWatched,
+			addFavorite : addFavorite
 		};
 	}
 })();

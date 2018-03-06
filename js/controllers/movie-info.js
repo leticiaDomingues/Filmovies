@@ -15,11 +15,14 @@
 		var self = this;
 
 		self.movieID = $routeParams.id;
+		self.username = 'isa';
 		self.reviewPage = 0;
 		self.nextReviewPage=0;
 		self.reviews = [];
 		self.howManyReviews = 0;
 		self.displayNoReviewsDiv = 'display-none';
+		self.movieClasses = ['', ''];
+		self.movieWatched = null;
 
 		//get movie info from API
 		let promise = FilMovies.getMovie(self.movieID);
@@ -29,7 +32,21 @@
 			
 			self.getReviews("Refresh");
 
+			//get movieWatched info
+			let promise = FilMovies.didUserWatchMovie(self.movieID, self.username);
+			promise.then(function(data) { 
+				self.movieWatched = data;
+				self.controlFavoriteAndWatchedButtons()
+
+			}, function(){}); 
+
 		}, function(){}); 
+
+		self.controlFavoriteAndWatchedButtons = function() {
+			self.movieClasses[0] = (self.movieWatched != "null") ?  'checked' : '';
+			self.movieClasses[1] = (self.movieWatched != "null" &&
+				self.movieWatched.Favorite != false) ?  'checked' : '';
+		};
 
 		self.getReviews = function(action) {
 			if(action == 'afterNewReview') {
@@ -69,7 +86,7 @@
 			var review =  {
 				"Content": self.newReview,
 				"Date": new Date(),
-				"Username": "isa",
+				"Username": self.username,
 				"MovieID": self.movieID
 			}
 			
@@ -81,6 +98,43 @@
 			}, function(){}); 
 
 			return false;
+		}
+
+		self.watchMovie = function(isFavorite) {
+			if(self.movieWatched != "null")
+				return self.removeMovieWatched();
+
+			var mw = {
+				"Username" : self.username,
+				"MovieID" : self.movieID,
+				"Favorite": isFavorite
+			}
+					
+			let promise = FilMovies.watchMovie(mw);
+			promise.then(function(data) { 
+				self.movieWatched = mw;
+				self.controlFavoriteAndWatchedButtons();
+			}, function(){}); 
+		}
+
+		self.removeMovieWatched = function() {
+			let promise = FilMovies.removeMovieWatched(self.movieID, self.username);
+			promise.then(function(data) { 
+				self.movieWatched = "null";
+				self.controlFavoriteAndWatchedButtons();
+			}, function(){}); 
+		}
+
+		self.addFavorite = function() {
+			if(self.movieWatched == "null")
+				return self.watchMovie(1);
+
+			self.movieWatched.Favorite = (self.movieWatched.Favorite) ? 0 : 1;
+
+			let promise = FilMovies.addFavorite(self.movieWatched);
+			promise.then(function(data) { 
+				self.controlFavoriteAndWatchedButtons();
+			}, function(){}); 
 		}
 	}
 
