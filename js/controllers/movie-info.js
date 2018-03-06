@@ -131,7 +131,8 @@
 			var mw = {
 				"Username" : self.username,
 				"MovieID" : self.movieID,
-				"Favorite": isFavorite
+				"Favorite": isFavorite,
+				"Date": new Date()
 			}
 
 			if(rate != -1) {

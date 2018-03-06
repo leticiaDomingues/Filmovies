@@ -96,6 +96,18 @@
 	        return $http.put(baseUrl + '/moviewatched', movieWatched);
 		};
 
+		function getWatchedMovies(username, page) {
+	        return $http.get(baseUrl + '/movie/user?username=' + username + '&page=' + page).then(function(result){
+			  	return result.data;
+	        });
+		};
+
+		function getFavoriteMovies(username, page) {
+	        return $http.get(baseUrl + '/movie/favorite?username=' + username + '&page=' + page).then(function(result){
+			  	return result.data;
+	        });
+		};
+
 
 		return {
 			getRandomMovies : getRandomMovies,
@@ -107,7 +119,9 @@
 			didUserWatchMovie : didUserWatchMovie,
 			watchMovie : watchMovie,
 			removeMovieWatched : removeMovieWatched,
-			addFavoriteOrRateMovie : addFavoriteOrRateMovie
+			addFavoriteOrRateMovie : addFavoriteOrRateMovie,
+			getWatchedMovies : getWatchedMovies,
+			getFavoriteMovies : getFavoriteMovies
 		};
 	}
 })();
