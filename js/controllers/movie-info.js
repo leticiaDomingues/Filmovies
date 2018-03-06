@@ -134,6 +134,7 @@
 			let promise = FilMovies.addFavorite(self.movieWatched);
 			promise.then(function(data) { 
 				self.controlFavoriteAndWatchedButtons();
+				self.getReviews("afterNewReview");
 			}, function(){}); 
 		}
 	}

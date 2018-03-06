@@ -289,6 +289,10 @@
     color: #ee6e73;
 }
 
+.movie-review-status .favorite .material-icons {
+	margin-left: .3rem;
+}
+
 .movie-info-container .btn-floating  {
 	background-color: transparent;
 	border: 1px solid #ee6e73;

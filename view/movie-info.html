@@ -62,6 +62,12 @@
 						<span class='pipe'>|</span>
 						<i class="material-icons movie-rate" ng-repeat="star in r.Stars track by $index">{{star}}</i>
 					</div>
+					<div class='vertical-middle' ng-show="{{r.Favorite}}">
+						<span class='pipe'>|</span>
+						<span class='vertical-middle favorite'>
+							Favorito<i class="material-icons movie-rate">favorite</i>
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>
