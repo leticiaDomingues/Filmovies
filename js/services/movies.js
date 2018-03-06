@@ -92,7 +92,7 @@
 	        return $http.delete(baseUrl + '/moviewatched?movieID=' + movieID + '&username=' + username);
 		};
 
-		function addFavorite(movieWatched) {
+		function addFavoriteOrRateMovie(movieWatched) {
 	        return $http.put(baseUrl + '/moviewatched', movieWatched);
 		};
 
@@ -107,7 +107,7 @@
 			didUserWatchMovie : didUserWatchMovie,
 			watchMovie : watchMovie,
 			removeMovieWatched : removeMovieWatched,
-			addFavorite : addFavorite
+			addFavoriteOrRateMovie : addFavoriteOrRateMovie
 		};
 	}
 })();

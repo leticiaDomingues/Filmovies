@@ -240,7 +240,11 @@
 
 .movie-info-container .movie-stars {
 	width: 100%;
-	text-align: right;
+	text-align: center;
+}
+
+.movie-info-container .movie-stars .material-icons {
+	color: #ee6e73;
 }
 
 .movie-info-container .btn-floating {

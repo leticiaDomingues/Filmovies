@@ -36,6 +36,9 @@
 			let promise = FilMovies.didUserWatchMovie(self.movieID, self.username);
 			promise.then(function(data) { 
 				self.movieWatched = data;
+
+				self.updateStars();
+
 				self.controlFavoriteAndWatchedButtons()
 
 			}, function(){}); 
@@ -47,6 +50,19 @@
 			self.movieClasses[1] = (self.movieWatched != "null" &&
 				self.movieWatched.Favorite != false) ?  'checked' : '';
 		};
+
+		self.updateStars = function() {
+			let promise = FilMovies.getMovie(self.movieID);
+			promise.then(function(data) { 
+				self.movie.Rate = data.Rate;
+			}, function(){});
+
+			//calculate stars
+			if(self.movieWatched!="null" && self.movieWatched.Rate != null)
+				self.movie.Stars = calculateStars(self.movieWatched.Rate);
+			else
+				self.movie.Stars = calculateStars(0);
+		}
 
 		self.getReviews = function(action) {
 			if(action == 'afterNewReview') {
@@ -100,7 +116,7 @@
 			return false;
 		}
 
-		self.watchMovie = function(isFavorite) {
+		self.watchMovie = function(isFavorite, rate) {
 			if(self.movieWatched != "null")
 				return self.removeMovieWatched();
 
@@ -109,11 +125,16 @@
 				"MovieID" : self.movieID,
 				"Favorite": isFavorite
 			}
+
+			if(rate != -1) {
+				mw.Rate = rate;
+			}
 					
 			let promise = FilMovies.watchMovie(mw);
 			promise.then(function(data) { 
 				self.movieWatched = mw;
 				self.controlFavoriteAndWatchedButtons();
+				self.updateStars();
 			}, function(){}); 
 		}
 
@@ -122,24 +143,38 @@
 			promise.then(function(data) { 
 				self.movieWatched = "null";
 				self.controlFavoriteAndWatchedButtons();
+				self.updateStars();
 			}, function(){}); 
 		}
 
 		self.addFavorite = function() {
 			if(self.movieWatched == "null")
-				return self.watchMovie(1);
+				return self.watchMovie(1,-1);
 
 			self.movieWatched.Favorite = (self.movieWatched.Favorite) ? 0 : 1;
 
-			let promise = FilMovies.addFavorite(self.movieWatched);
+			let promise = FilMovies.addFavoriteOrRateMovie(self.movieWatched);
 			promise.then(function(data) { 
 				self.controlFavoriteAndWatchedButtons();
-				self.getReviews("afterNewReview");
+			}, function(){}); 
+		}
+
+		self.rateMovie = function(rate) {
+			console.log(rate);
+			if(self.movieWatched == "null")
+				return self.watchMovie(0, rate);
+			
+			self.movieWatched.Rate = (self.movieWatched.Rate == rate) ? null : rate;
+
+			let promise = FilMovies.addFavoriteOrRateMovie(self.movieWatched);
+			promise.then(function(data) { 
+				self.controlFavoriteAndWatchedButtons();
+				self.updateStars();
 			}, function(){}); 
 		}
 	}
 
-	function calculateStars(rate) {			
+	function calculateStars(rate) {		
 		let stars = ['star_border','star_border','star_border','star_border','star_border'];
 		switch (true) {
 			case (rate == 5):

@@ -9,11 +9,7 @@
 				<div class='col s3 no-padding margin-t1'>
 					<div class='movie-rate no-margin'>{{mInfoCtrl.movie.Rate| number:1}}/5.0</div>
 					<div class='inline-block movie-stars'>
-						<i class="material-icons movie-rate">star_border</i>
-						<i class="material-icons movie-rate">star_border</i>
-						<i class="material-icons movie-rate">star_border</i>
-						<i class="material-icons movie-rate">star_border</i>
-						<i class="material-icons movie-rate">star_border</i>
+						<i class="material-icons movie-rate" ng-repeat="star in mInfoCtrl.movie.Stars track by $index" ng-click='mInfoCtrl.rateMovie($index+1);'>{{star}}</i>
 					</div>
 				</div>
 			</div>
@@ -36,7 +32,7 @@
 					{{mInfoCtrl.movie.Actors[0].Name}}, {{mInfoCtrl.movie.Actors[1].Name}}, {{mInfoCtrl.movie.Actors[2].Name}}</p>
 			</div>
 			<div class='movie-directors-cast bottom-fixed-right'>
-				<a class="btn-floating waves-effect waves-light watched" ng-class="mInfoCtrl.movieClasses[0]"><i class="material-icons" ng-click='mInfoCtrl.watchMovie(0)'>remove_red_eye</i></a>
+				<a class="btn-floating waves-effect waves-light watched" ng-class="mInfoCtrl.movieClasses[0]"><i class="material-icons" ng-click='mInfoCtrl.watchMovie(0, -1)'>remove_red_eye</i></a>
 				<a class="btn-floating waves-effect waves-light favorite" ng-class="mInfoCtrl.movieClasses[1]"><i class="material-icons" ng-click='mInfoCtrl.addFavorite()'>favorite</i></a>
 				<a class="btn-floating waves-effect waves-light modal-trigger" href="#modalNewReview" onclick="return false;"><i class="material-icons">edit</i></a>
 			</div>
@@ -60,7 +56,9 @@
 					<span class='vertical-middle'><i class="material-icons margin-r06">access_time</i>{{r.Review.Date | date:'dd MMM yyyy'}}</span>
 					<div class='movie-stars vertical-middle' ng-show="{{r.Rate}} > 0">
 						<span class='pipe'>|</span>
-						<i class="material-icons movie-rate" ng-repeat="star in r.Stars track by $index">{{star}}</i>
+						<a ng-repeat="star in r.Stars track by $index" ng-click='mInfoCtrl.rateMovie($index);'>
+							<i class="material-icons movie-rate">{{star}}</i>
+						</a>
 					</div>
 					<div class='vertical-middle' ng-show="{{r.Favorite}}">
 						<span class='pipe'>|</span>
