@@ -18,6 +18,7 @@
 /* Padding options */
 .no-padding { padding: 0; }
 .padding-3 { padding: 3rem; }
+.padding-l2 { padding-left: 2rem; }
 
 /* Font options */
 .font-2 { font-size: 2rem; }
