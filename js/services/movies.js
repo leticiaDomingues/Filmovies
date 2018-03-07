@@ -108,6 +108,10 @@
 	        });
 		};
 
+		function login(user) {
+	        return $http.post(baseUrl + '/user/login', user);
+		};
+
 
 		return {
 			getRandomMovies : getRandomMovies,
@@ -121,7 +125,8 @@
 			removeMovieWatched : removeMovieWatched,
 			addFavoriteOrRateMovie : addFavoriteOrRateMovie,
 			getWatchedMovies : getWatchedMovies,
-			getFavoriteMovies : getFavoriteMovies
+			getFavoriteMovies : getFavoriteMovies,
+			login : login
 		};
 	}
 })();

@@ -111,11 +111,20 @@
 	width: 85%;
 }
 
-.side-nav .nav-login-logout a {
+.side-nav .nav-login-logout .logout-div a {
 	font-size: 11px !important;
-	padding: 0;
 	display: inline-flex;
     vertical-align: middle;
+    padding: 0 32px;
+    width: 100%;
+    align-items: center;
+  	justify-content: center;
+  	color: #aaa;
+    text-transform: uppercase;
+}
+
+.side-nav .nav-login-logout .logout-div .material-icons {
+	margin-right: .6rem !important;
 }
 
 .side-nav .nav-login-logout .material-icons {
@@ -560,4 +569,94 @@
     top: 140px;
     left: 130px;
     font-weight: 500;
+}
+
+.nav-login-logout .login-div span {
+	cursor: pointer;
+	color: #fff !important;
+    font-weight: 300;
+    font-size: .8rem;
+    text-transform: uppercase;
+}
+
+.nav-login-logout .login-div .pipe {
+	margin: 0 .6rem;
+	color: #aaa !important;
+}
+
+.main-login-div .border-login {
+	margin-top: 10rem;
+    height: 29rem;
+    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.1), 
+    			0px 0px 0px 0px rgba(0, 0, 0, 0.12), 
+    			0px 1px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.main-login-div .input-field {
+	padding: 1rem 0;
+}
+
+.main-login-div .input-field.username-field {
+	margin-top: 3rem;
+}
+
+.main-login-div .submit-login button {
+	width: 100%;
+    background-color: #ee6e73;
+}
+
+.main-login-div .submit-login {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.main-login-div .material-icons {
+	color: #ee6e73;
+}
+
+.main-login-div .input-field input:focus {
+	border-bottom: 1px solid #9e9e9e !important;
+	box-shadow: 0 .1px 0 0 #9e9e9e !important;
+}
+
+.main-login-div .prefix.active {
+	color: #ee6e73 !important;
+}
+
+.main-login-div .input-field input:focus + label {
+	color: #9e9e9e !important;
+}
+
+.main-login-div .signup-div {
+	font-size: .8rem;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.main-login-div .signup-div .signup-label{
+	cursor: pointer;
+	color: #ee6e73;
+	font-weight: 500;
+	font-weight: 600;
+}
+
+.main-login-div .input-field input.ng-invalid.ng-dirty{
+	border-bottom: 1px solid red;
+}
+
+.main-login-div .incorrect-field-content {
+	font-size: .8rem;
+    color: red;
+    text-align: center;
+    display:none;
+}
+
+.main-login-div  input.ng-invalid.ng-dirty ~ .incorrect-field-content {
+	display: block;
+}
+
+.main-login-div .incorrect-credentials {
+	color: red;
+	padding-bottom: 0;
 }

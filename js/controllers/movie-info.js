@@ -5,9 +5,9 @@
 		.module('app')
 		.controller('MovieInfoController', movieInfoController);
 
-	movieInfoController.$inject = ['$routeParams', 'FilMovies'];
+	movieInfoController.$inject = ['$scope','$routeParams', 'FilMovies', '$localStorage', '$location'];
 
-	function movieInfoController($routeParams, FilMovies) {
+	function movieInfoController($scope, $routeParams, FilMovies, $localStorage, $location) {
 
 		$(document).ready(function() {
 		    $('#modalNewReview').modal();
@@ -15,7 +15,6 @@
 		var self = this;
 
 		self.movieID = $routeParams.id;
-		self.username = 'isa';
 		self.reviewPage = 0;
 		self.nextReviewPage=0;
 		self.reviews = [];
@@ -25,6 +24,8 @@
 		self.movieWatched = null;
 		self.closeModal='modal-close';
 		self.invalidReview = 'display-none';
+
+		self.username = ($localStorage.user == null) ? null : $localStorage.user.Username;
 
 		//get movie info from API
 		let promise = FilMovies.getMovie(self.movieID);
@@ -61,9 +62,9 @@
 
 			//calculate stars
 			if(self.movieWatched!="null" && self.movieWatched.Rate != null)
-				self.movie.Stars = calculateStars(self.movieWatched.Rate);
+				self.movie.Stars = $scope.$parent.$parent.calculateStars(self.movieWatched.Rate);
 			else
-				self.movie.Stars = calculateStars(0);
+				self.movie.Stars = $scope.$parent.$parent.calculateStars(0);
 		}
 
 		self.getReviews = function(action) {
@@ -78,7 +79,7 @@
 				promise.then(function(data) { 
 					data.reviews.forEach(function(review) { 
 						review.Review.Content.replace(/\n/g, "<br />");			
-						review.Stars = calculateStars(review.Rate);
+						review.Stars = $scope.$parent.$parent.calculateStars(review.Rate);
 						if(review.Rate == null)
 							review.Rate = 0;
 					});
@@ -101,6 +102,11 @@
 		}
 
 		self.addReview = function() {
+			if(self.username==null) {
+				$scope.$parent.$parent.redirectToLogin();
+				return false;
+			}
+			
 			if(self.newReview == "" || self.newReview == undefined) {
 				self.closeModal='';
 				self.invalidReview = 'inline-block';
@@ -125,6 +131,11 @@
 		}
 
 		self.watchMovie = function(isFavorite, rate) {
+			if(self.username==null) {
+				$scope.$parent.$parent.redirectToLogin();
+				return false;
+			}
+
 			if(self.movieWatched != "null")
 				return self.removeMovieWatched();
 
@@ -157,6 +168,11 @@
 		}
 
 		self.addFavorite = function() {
+			if(self.username==null) {
+				$scope.$parent.$parent.redirectToLogin();
+				return false;
+			}
+
 			if(self.movieWatched == "null")
 				return self.watchMovie(1,-1);
 
@@ -169,7 +185,11 @@
 		}
 
 		self.rateMovie = function(rate) {
-			console.log(rate);
+			if(self.username==null) {
+				$scope.$parent.$parent.redirectToLogin();
+				return false;
+			}
+
 			if(self.movieWatched == "null")
 				return self.watchMovie(0, rate);
 			
@@ -181,42 +201,5 @@
 				self.updateStars();
 			}, function(){}); 
 		}
-	}
-
-	function calculateStars(rate) {		
-		let stars = ['star_border','star_border','star_border','star_border','star_border'];
-		switch (true) {
-			case (rate == 5):
-			    stars = ['star','star','star','star','star'];
-			    break;
-		  	case (rate > 4.2):
-			    stars = ['star','star','star','star','star_half'];
-			    break;
-			case (rate > 3.8):
-			    stars = ['star','star','star','star','star_border'];
-			    break;
-			case (rate > 3.2):
-		    	stars = ['star','star','star','star_half','star_border'];
-		    	break;
-		    case (rate > 2.8):
-		    	stars = ['star','star','star','star_border','star_border'];
-		    	break;
-			case (rate > 2.2):
-		    	stars = ['star','star','star_half','star_border','star_border'];
-		    	break;		
-		   	case (rate > 1.8):
-		    	stars = ['star','star','star_border','star_border','star_border'];
-		    	break;	
-		   	case (rate > 1.2):
-		    	stars = ['star','star_half','star_border','star_border','star_border'];
-		    	break;		
-		    case (rate > 0.8):
-		    	stars = ['star','star_border','star_border','star_border','star_border'];
-		    	break;
-		    case (rate > 0.2):
-		    	stars = ['star_half','star_border','star_border','star_border','star_border'];
-		    	break;	
-		}
-		return stars;
 	}
 })();
