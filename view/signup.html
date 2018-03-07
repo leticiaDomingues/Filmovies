@@ -1,3 +1,41 @@
 <div ng-controller='SignupController as signupCtrl' class='main-div'>
-	
+	<div class='main-login-div row'>
+		<form class='col s5 offset-s3 border-login' novalidate>
+			<div class="row">
+				<div class="input-field col s8 offset-s2 username-field">
+					<i class="material-icons prefix">create</i>
+					<input id="icon_telephone" type="text" maxlength="30" required ng-model="signupCtrl.user.Name" ng-class='signupCtrl.incorrectFieldClasses[2]'>
+					<label for="icon_telephone">Nome</label>
+					<div class='incorrect-field-content'>
+						Este campo é obrigatório.
+					</div>
+				</div>
+				<div class="input-field col s8 offset-s2">
+					<i class="material-icons prefix">account_circle</i>
+					<input id="icon_prefix" type="text" maxlength="30" required ng-model="signupCtrl.user.Username" ng-class='signupCtrl.incorrectFieldClasses[0]'>
+					<label for="icon_prefix">Usuário</label>
+					<div class='incorrect-field-content'>
+						Este campo é obrigatório.
+					</div>
+				</div>
+				<div class="input-field col s8 offset-s2">
+					<i class="material-icons prefix">lock</i>
+					<input id="icon_password" type="password" maxlength="30" required ng-model="signupCtrl.user.Password" ng-class='signupCtrl.incorrectFieldClasses[1]'>
+					<label for="icon_password">Senha</label>
+					<div class='incorrect-field-content'>
+						Este campo é obrigatório.
+					</div>
+				</div>
+				<div class="input-field col s8 offset-s2 signup-div incorrect-credentials" ng-show="signupCtrl.incorrectCredentials">
+					Esse nome de usuário está ocupado. Escolha outro e tente novamente.
+				</div>
+				<div class='col s8 offset-s2 input-field submit-login'>
+					<button class="waves-effect waves-light btn-large" ng-click="signupCtrl.signup()">Cadastrar</a>
+				</div>
+				<div class="input-field col s8 offset-s2 signup-div">
+					Já possui uma conta? Entre no sistema <a href='#/login' class='signup-label'>aqui</a>!
+				</div>
+			</div>
+		</form>
+	</div>
 </div>

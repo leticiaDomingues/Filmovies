@@ -112,6 +112,10 @@
 	        return $http.post(baseUrl + '/user/login', user);
 		};
 
+		function signup(user) {
+	        return $http.post(baseUrl + '/user', user);
+		};
+
 
 		return {
 			getRandomMovies : getRandomMovies,
@@ -126,7 +130,8 @@
 			addFavoriteOrRateMovie : addFavoriteOrRateMovie,
 			getWatchedMovies : getWatchedMovies,
 			getFavoriteMovies : getFavoriteMovies,
-			login : login
+			login : login,
+			signup : signup
 		};
 	}
 })();
