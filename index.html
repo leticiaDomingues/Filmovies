@@ -73,7 +73,7 @@
         		<div class='login-div' ng-hide="currentUser">
         			<a href="#/login"><span class='login'>Entrar</span></a>
         			<span class='pipe'>|</span>
-        			<span class='signup'>Cadastrar</span>
+        			<a href="#/signup"><span class='signup'>Cadastrar</span></a>
         		</div>
         		<div class='logout-div' ng-show="currentUser">
 	        		<a  class="waves-effect waves-red" ng-click="logout()">
@@ -111,5 +111,6 @@
 	<script src="js/controllers/movie-info.js"></script>
 	<script src="js/controllers/my-profile.js"></script>
 	<script src="js/controllers/login.js"></script>
+	<script src="js/controllers/signup.js"></script>
 </body>
 </html>
