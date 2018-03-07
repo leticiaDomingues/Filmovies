@@ -659,3 +659,13 @@
 	color: red;
 	padding-bottom: 0;
 }
+
+.carousel {
+    perspective: 1000px !important;
+    overflow: inherit !important;
+    height: 350px !important;
+}
+
+.carousel .carousel-item {
+	top: -30 !important;
+}

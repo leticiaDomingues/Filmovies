@@ -1,0 +1,63 @@
+<div ng-controller='ExploreController as exploreCtrl' class='main-div'>
+	 <div class="row">
+		 	<div class="carousel">
+				<a class="carousel-item"><img src="https://cdn.fstatic.com/media/movies/covers/2017/06/moonlight_ver2_xxlg.jpg"></a>
+				<a class="carousel-item"><img src="https://cdn.fstatic.com/media/movies/covers/2017/06/moonlight_ver2_xxlg.jpg"></a>
+				<a class="carousel-item"><img src="https://cdn.fstatic.com/media/movies/covers/2017/06/moonlight_ver2_xxlg.jpg"></a>
+				<a class="carousel-item"><img src="https://cdn.fstatic.com/media/movies/covers/2017/06/moonlight_ver2_xxlg.jpg"></a>
+				<a class="carousel-item"><img src="https://cdn.fstatic.com/media/movies/covers/2017/06/moonlight_ver2_xxlg.jpg"></a>
+				<a class="carousel-item"><img src="https://cdn.fstatic.com/media/movies/covers/2017/06/moonlight_ver2_xxlg.jpg"></a>
+				<a class="carousel-item"><img src="https://cdn.fstatic.com/media/movies/covers/2017/06/moonlight_ver2_xxlg.jpg"></a>
+				<a class="carousel-item"><img src="https://cdn.fstatic.com/media/movies/covers/2017/06/moonlight_ver2_xxlg.jpg"></a>
+			</div>
+      </div>
+
+      <div class=' padding-3'>
+      	<div class='page-title font-15'>
+			Mais assistidos
+		</div>
+		<div class='movies-template-container row'>
+			<div class='movie-container col s2 text-center' ng-repeat="movie in exploreCtrl.watchedMovies">
+				<a href='#/movieinfo/{{movie.MovieID}}'>
+					<img class='movie-thumbnail' ng-src='{{movie.ImageUrl}}'/>
+					<div class="overlay">
+						<div class="movie-info">
+							<div class='movie-title'>
+								{{movie.Title}}
+								<p class='movie-year'>{{movie.Year}}</p>
+							</div>
+							<div class='inline-block movie-stars'>
+								<i class="material-icons movie-rate" ng-repeat="star in movie.Stars track by $index">{{star}}</i>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+      </div>
+
+      <div class=' padding-3 no-padding-top'>
+      	<div class='page-title font-15'>
+			Mais favoritados
+		</div>
+		<div class='movies-template-container row'>
+			<div class='movie-container col s2 text-center' ng-repeat="movie in exploreCtrl.favoriteMovies">
+				<a href='#/movieinfo/{{movie.MovieID}}'>
+					<img class='movie-thumbnail' ng-src='{{movie.ImageUrl}}'/>
+					<div class="overlay">
+						<div class="movie-info">
+							<div class='movie-title'>
+								{{movie.Title}}
+								<p class='movie-year'>{{movie.Year}}</p>
+							</div>
+							<div class='inline-block movie-stars'>
+								<i class="material-icons movie-rate" ng-repeat="star in movie.Stars track by $index">{{star}}</i>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+      </div>
+
+</div>

@@ -116,6 +116,18 @@
 	        return $http.post(baseUrl + '/user', user);
 		};
 
+		function getMostWatchedMovies() {
+	        return $http.get(baseUrl + '/movie/mostWatched').then(function(result){
+			  	return result.data;
+	        });
+		};
+
+		function getMostFavoriteMovies() {
+	        return $http.get(baseUrl + '/movie/mostFavorite').then(function(result){
+			  	return result.data;
+	        });
+		};
+
 
 		return {
 			getRandomMovies : getRandomMovies,
@@ -131,7 +143,9 @@
 			getWatchedMovies : getWatchedMovies,
 			getFavoriteMovies : getFavoriteMovies,
 			login : login,
-			signup : signup
+			signup : signup,
+			getMostWatchedMovies : getMostWatchedMovies,
+			getMostFavoriteMovies : getMostFavoriteMovies
 		};
 	}
 })();
