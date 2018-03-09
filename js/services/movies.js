@@ -16,6 +16,12 @@
 	        });
 		};
 
+		function getRandomMoviesExplore(qty) {
+	        return $http.get(baseUrl + '/movie/random?qty=' + qty).then(function(result){
+			  	return result.data;
+	        });
+		};
+
 		function getAllMovies() {
 	        return $http.get(baseUrl + '/movie').then(function(result){
 			  	return result.data;
@@ -145,7 +151,8 @@
 			login : login,
 			signup : signup,
 			getMostWatchedMovies : getMostWatchedMovies,
-			getMostFavoriteMovies : getMostFavoriteMovies
+			getMostFavoriteMovies : getMostFavoriteMovies,
+			getRandomMoviesExplore : getRandomMoviesExplore
 		};
 	}
 })();
