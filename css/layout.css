@@ -148,6 +148,11 @@
 
 
 .movie-thumbnail {
+    width: 95%;
+    height: 100%;
+}
+
+.movie-template-thumbnail {
 	width: 142px;
 	height: 203px;
 }
@@ -175,6 +180,10 @@
   transition: .3s ease;
   width: 142px;
   margin: auto;
+}
+
+.main-overlay {
+	width: 95% !important;
 }
 
 /* When you mouse over the container, the overlay text will "zoom" in display */
@@ -364,6 +373,7 @@
 
 .row .col.s8ths {
   width: 12.5%;
+  height: 30%;
 }
 
 @media only screen and (min-width: 601px) {
@@ -668,4 +678,8 @@
 
 .carousel .carousel-item {
 	top: -30 !important;
+}
+
+.movie-review-author a {
+	color: #ee6e73;
 }

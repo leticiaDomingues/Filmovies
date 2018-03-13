@@ -118,6 +118,12 @@
 	        return $http.post(baseUrl + '/user/login', user);
 		};
 
+		function getUserInfo(username) {
+			return $http.get(baseUrl + '/user?username=' + username).then(function(result){
+			  	return result.data;
+	        });
+		}
+
 		function signup(user) {
 	        return $http.post(baseUrl + '/user', user);
 		};
@@ -152,7 +158,8 @@
 			signup : signup,
 			getMostWatchedMovies : getMostWatchedMovies,
 			getMostFavoriteMovies : getMostFavoriteMovies,
-			getRandomMoviesExplore : getRandomMoviesExplore
+			getRandomMoviesExplore : getRandomMoviesExplore,
+			getUserInfo : getUserInfo
 		};
 	}
 })();

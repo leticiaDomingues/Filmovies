@@ -2,7 +2,7 @@
 	<div class='movie-container col s8ths text-center' ng-repeat="movie in homeCtrl.movies">
 		<a href='#/movieinfo/{{movie.MovieID}}'>
 			<img class='movie-thumbnail' ng-src='{{movie.ImageUrl}}'/>
-			<div class="overlay">
+			<div class="overlay main-overlay">
 				<div class="movie-info">
 					<div class='movie-title'>
 						{{movie.Title}}

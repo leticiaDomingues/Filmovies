@@ -28,7 +28,6 @@
 				let promise = FilMovies.login(self.user);
 				promise.then(function(data) {
 					self.incorrectCredentials = !(data.data.correctCredentials);
-					console.log(self.incorrectCredentials);
 					if(!self.incorrectCredentials) {
 						$localStorage.user = data.data.user;
 						//atualiza a view

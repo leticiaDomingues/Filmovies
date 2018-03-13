@@ -20,6 +20,9 @@
 			.when('/myprofile', {
 				templateUrl : 'view/my-profile.html'
 			})
+			.when('/myprofile/:friendUsername', {
+				templateUrl : 'view/my-profile.html'
+			})
 			.when('/login', {
 				templateUrl : 'view/login.html'
 			})

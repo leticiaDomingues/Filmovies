@@ -5,9 +5,9 @@
 		.module('app')
 		.controller('MyProfileController', myProfileController);
 
-	myProfileController.$inject = ['$scope', 'FilMovies', '$localStorage', '$location'];
+	myProfileController.$inject = ['$scope', 'FilMovies', '$localStorage', '$location', '$routeParams'];
 
-	function myProfileController($scope, FilMovies, $localStorage, $location) {
+	function myProfileController($scope, FilMovies, $localStorage, $location, $routeParams) {
 		var self = this;
 
 		self.tabClasses = ['active', '', ''];
@@ -19,12 +19,6 @@
 		//redirect to home if user is already logged-in
 		if(!$localStorage.user)
 			$scope.$parent.$parent.redirectToHome();
-
-		self.user = {
-			username : $localStorage.user.Username,
-			name : $localStorage.user.Name
-		}
-		console.log(self.user);
 
 		self.changeTab = function(index) {
 			self.tabClasses = ['', '', ''];
@@ -44,6 +38,7 @@
 		}
 
 		self.getMovies = function(pageName)  {
+
 			let promise = (pageName=="watched") ?
 				FilMovies.getWatchedMovies(self.user.username, $scope.currentPage) :
 				FilMovies.getFavoriteMovies(self.user.username, $scope.currentPage);
@@ -66,7 +61,26 @@
 
 		//get movies from API
 		self.movies = [];
-		self.getMovies("watched");
+
+
+		//display user info (logged user or friend)
+		if($routeParams.friendUsername) {
+			let friendUsername = $routeParams.friendUsername;
+			let promise = FilMovies.getUserInfo(friendUsername);
+			promise.then(function(data) { 
+				self.user = {
+					username : data.Username,
+					name : data.Name
+				};
+				self.getMovies("watched");
+			}, function(){});   
+		} else {
+			self.user = {
+				username : $localStorage.user.Username,
+				name : $localStorage.user.Name
+			};	 
+			self.getMovies("watched");
+		}
 
 
 		//control pagination
