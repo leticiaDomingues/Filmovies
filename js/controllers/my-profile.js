@@ -15,12 +15,15 @@
 		self.numPerPage = 18;
 		self.title="Filmes assistidos";
 		self.divNoMoviesToDisplay = 'display-none';
+		self.tab = 0;
+		self.isLoggedUser = true;
 
 		//redirect to home if user is already logged-in
 		if(!$localStorage.user)
 			$scope.$parent.$parent.redirectToHome();
 
 		self.changeTab = function(index) {
+			self.tab = index;
 			self.tabClasses = ['', '', ''];
 			self.tabClasses[index] = 'active';
 			$scope.currentPage = 1;
@@ -33,6 +36,7 @@
 						self.getMovies("favorite");
 						break;
 				case 2: self.title="Estatísticas";
+						self.getStats();
 						break;
 			}
 		}
@@ -59,12 +63,35 @@
 			}, function(){}); 
 		}
 
+		self.stats = {};
+
+		self.getStats = function()  {
+
+			let promise = FilMovies.getStats(self.user.username);
+			promise.then(function(data) { 
+				self.stats = data;
+				let total = data.totalTime;
+				self.stats.timeWatched={};
+
+				//calculate number of days
+				self.stats.timeWatched.days = Math.floor(total/60/24);
+				total -= 1440 * self.stats.timeWatched.days;
+				//calculate number of hours
+				self.stats.timeWatched.hours = Math.floor(total/60);
+				total -= 60 * self.stats.timeWatched.hours;
+
+				//calculate number of minutes
+				self.stats.timeWatched.minutes = total;
+			}, function(){}); 
+		}
+
 		//get movies from API
 		self.movies = [];
 
 
 		//display user info (logged user or friend)
 		if($routeParams.friendUsername) {
+			self.isLoggedUser = false;
 			let friendUsername = $routeParams.friendUsername;
 			let promise = FilMovies.getUserInfo(friendUsername);
 			promise.then(function(data) { 

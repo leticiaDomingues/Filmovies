@@ -20,6 +20,7 @@
 .no-padding-top { padding-top: 0 !important }
 .padding-3 { padding: 3rem; }
 .padding-l2 { padding-left: 2rem; }
+.padding-s2 { padding-right: 2rem; padding-left: 2rem;}
 
 /* Font options */
 .font-2 { font-size: 2rem; }

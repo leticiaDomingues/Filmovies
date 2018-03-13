@@ -124,6 +124,12 @@
 	        });
 		}
 
+		function getStats(username) {
+			return $http.get(baseUrl + '/user/totalWatched?username=' + username).then(function(result){
+			  	return result.data;
+	        });
+		}
+
 		function signup(user) {
 	        return $http.post(baseUrl + '/user', user);
 		};
@@ -159,7 +165,8 @@
 			getMostWatchedMovies : getMostWatchedMovies,
 			getMostFavoriteMovies : getMostFavoriteMovies,
 			getRandomMoviesExplore : getRandomMoviesExplore,
-			getUserInfo : getUserInfo
+			getUserInfo : getUserInfo,
+			getStats : getStats
 		};
 	}
 })();

@@ -683,3 +683,22 @@
 .movie-review-author a {
 	color: #ee6e73;
 }
+
+.profile-stats .total-time .info {
+	text-transform: uppercase;
+}
+
+.profile-stats .total-time .number {
+	font-size: 2rem;
+}
+
+.total-stats .material-icons {
+	color: #ee6e73;
+	font-size: 50px;
+    margin-bottom: 0.7rem;
+}
+
+.profile-stats .info .title {
+	text-transform: none;
+	margin-bottom: 1rem;
+}
